@@ -1,6 +1,8 @@
 *.pt
+*.pth
+*.ckpt
 .cv
 *.gz
 *ubyte
-김승룡교수님/data/*
+비전/김승룡교수님/data/*
 *.tgz
