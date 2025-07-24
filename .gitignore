@@ -4,5 +4,12 @@
 .cv
 *.gz
 *ubyte
-비전/02_김승룡교수님/data/*
+# 비전/02_김승룡교수님/data/*
 *.tgz
+**/results/*
+**/data/*
+**/clss/*
+**/inst/*
+**/img/*
+**/cls/*
+**/benchmark*
