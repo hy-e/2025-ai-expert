@@ -1,0 +1,12 @@
+h5py
+imageio
+numpy
+opencv-python
+Pillow
+scikit-image
+torch==1.7.1
+torchsummary
+torchvision==0.8.2
+tqdm
+rawpy
+matplotlib
