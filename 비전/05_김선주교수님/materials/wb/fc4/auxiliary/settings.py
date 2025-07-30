@@ -18,6 +18,7 @@ if torch.cuda.is_available():
 else:
     DEVICE_TYPE = "cpu" 
 
+DEVICE_TYPE = "cpu" 
 
 def get_device() -> torch.device:
     if DEVICE_TYPE == "cpu":

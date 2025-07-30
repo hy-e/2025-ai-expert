@@ -10,9 +10,24 @@ def gray_world(img):
     """
     
     # Write your code here!
+    img = img.astype(np.uint32)
+    g_avg = np.average(img[:, :, 1]) # Avg of G channel
+    img[:, :, 0] = np.minimum(img[:, :, 0] * (g_avg / np.average(img[:, :, 0])), 1023) # R = R * G_avg/R_avg
+    img[:, :, 2] = np.minimum(img[:, :, 2] * (g_avg / np.average(img[:, :, 2])), 1023) # B = B * G_avg/B_avg
+    img = np.clip(img, 0, 1023)
+    return img.astype(np.uint16)  # Convert back to uint16
 
+    """
+    answer
+    ---
+    img = img.transpose(2, 0, 1).astype(np.uint32) # (256, 256, 3) => (3, 256, 256)
+    mu_g = np.average(img[1]) # Avg of G channel
+    img[0] = np.minimum(img[0]*(mu_g/np.average(img[0])),1023) # R = R * G_avg/R_avg
+    img[2] = np.minimum(img[2]*(mu_g/np.average(img[2])),1023) # B = B * G_avg/B_avg
+    img = np.clip(img, 0, 1023)
+    return  img.transpose(1, 2, 0).astype(np.uint16) # (3, 256, 256) => (256, 256, 3)
+    """
 
-    return 
 
 
 if __name__ == '__main__':
