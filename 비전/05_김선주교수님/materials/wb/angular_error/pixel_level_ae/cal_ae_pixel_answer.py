@@ -1,9 +1,11 @@
 import cv2
 import numpy as np
+import time
 
 img1 = cv2.imread('sample_1.png') # (256, 256, 3) value 5~254
 img2 = cv2.imread('sample_2.png') # (256, 256, 3) value 5~254
 
+start = time.time()
 # v1 - iteration
 mae = 0.
 for i in range(img1.shape[0]):
@@ -19,10 +21,12 @@ for i in range(img1.shape[0]):
 		ae = np.arccos(cos_sim) * 180 / np.pi
 		mae += ae / (img1.shape[0] * img2.shape[1])
 print(mae)
+print("Time taken (v1):", time.time() - start)
 
 
 # v2 - parallelization
 # normalize every pixel to be unit vector
+start = time.time()
 img1_normalized_per_pixel = img1 / np.linalg.norm(img1, axis=2)[:, :, None]
 img2_normalized_per_pixel = img2 / np.linalg.norm(img2, axis=2)[:, :, None]
 
@@ -34,3 +38,4 @@ ae_map = np.arccos(cos_sim_map) * 180 / np.pi
 
 mae = np.mean(ae_map)
 print(mae)
+print("Time taken (v2):", time.time() - start)
