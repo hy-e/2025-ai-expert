@@ -18,3 +18,5 @@ __pycache__
 **/Kitti/*
 *.zip
 samsung_ai_expert_AIM
+.cv2
+주한별
